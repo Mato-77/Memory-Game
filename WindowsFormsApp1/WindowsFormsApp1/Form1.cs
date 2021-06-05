@@ -23,13 +23,12 @@ namespace WindowsFormsApp1
             tbPoints.Text = "0.00";
             DoubleBuffered = true;
             timer2.Interval = 800;
+            timer3.Interval = Level.Timing;
             
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-        }
+ 
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
@@ -40,19 +39,26 @@ namespace WindowsFormsApp1
        
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
-          
-                Level.contains(e.Location);
-                bool result = Level.checkInformations();
+
+            if (Level.contains(e.Location))
+            {
+                if (Level.SecondOpened != -1)
+                {
+                    bool result = Level.checkInformations();
+                    if (!result)
+                        timer2.Start();
+                    timer3.Stop();
+
+                }
+                else if (Level.FirstOpened != -1 && Level.Blocks[Level.FirstOpened].Opened)
+                    timer3.Start();
+                else
+                    timer3.Stop();
                 Invalidate();
-                if (!result) 
-                    timer2.Start();
+
+            }
+
         }
-
-
-
-
-
-
 
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -62,15 +68,7 @@ namespace WindowsFormsApp1
             {
 
                 Level = game.Level;
-                for (int i = 0; i < Controls.Count; i++)
-                {
-                    if (Controls[i].GetType() == typeof(PictureBox))
-                    {
-                        Controls.RemoveAt(i);
-                        i--;
-                    }
-
-                }
+           
                 Invalidate();
 
                 progressBarTime.Maximum = Level.Timer;
@@ -87,23 +85,22 @@ namespace WindowsFormsApp1
             tbPoints.Text = Level.Points.ToString();
             if (Level.Timer <= 0)
             {
-                timer1.Stop();
-                if (MessageBox.Show("Времето истече! Дали сакате нова игра?", "Играта заврши", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    newGameToolStripMenuItem_Click(null, null);
-                else
-                    this.Close(); 
+                endGame("Изгубивте!");
             }
             if (Level.finish())
             {
-                timer1.Stop();
-                if (MessageBox.Show("Победивте! Дали сакате нова игра?", "Играта заврши", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    newGameToolStripMenuItem_Click(null, null);
-                else
-                    this.Close();
+                endGame("Победивте!");
             }
             progressBarTime.Value = Level.Timer;
-         
 
+        }
+        private void endGame(String message)
+        {
+            timer1.Stop();
+            if (MessageBox.Show(message + " Дали сакате нова игра?", "Играта заврши", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                newGameToolStripMenuItem_Click(null, null);
+            else
+                this.Close();
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -111,6 +108,14 @@ namespace WindowsFormsApp1
             Level.punishment();
             Invalidate();
             timer2.Stop();
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            timer3.Stop();
+            Level.Blocks[Level.FirstOpened].Opened = false;
+            Level.FirstOpened = -1;
+            Invalidate();
         }
     }
 }

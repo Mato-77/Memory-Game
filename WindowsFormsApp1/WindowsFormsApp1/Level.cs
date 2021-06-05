@@ -16,6 +16,8 @@ namespace WindowsFormsApp1
 
         public List<string> HiddenInformation { get; set; }
 
+        public List<Block> HittedBlocks { get; set; }
+
         public Random Random { get; set; }
 
         public int Timer { get; set; }
@@ -26,12 +28,15 @@ namespace WindowsFormsApp1
 
         public int Points { get; set; }
 
-        public Level(int Blocks,int Seconds)
+        public int Timing { get; set; }
+
+        public Level(int Blocks, int Seconds)
         {
             this.NumBlocks = Blocks;
             this.Random = new Random();
             this.HiddenInformation = new List<string>();
             this.Blocks = new List<Block>();
+            this.HittedBlocks = new List<Block>();
             this.Timer = Seconds;
             this.FirstOpened = -1;
             this.SecondOpened = -1;
@@ -45,18 +50,21 @@ namespace WindowsFormsApp1
         // strategy e za rasporeduvanje na igrata
         public abstract void strategy();
         // razlicno vreme na dozvoleno otvaranje na eden blok pred toj da bide zatvoren
-        public abstract void timing(Form1 form);
 
-     
 
-        public void contains(Point point)
+
+        public bool contains(Point point)
         {
             if (FirstOpened != -1 && SecondOpened != -1)
-                return;
+                return false;
             for (int i = 0; i < Blocks.Count; i++)
             {
+
+
                 if (Blocks[i].contains(point))
                 {
+                    if (HittedBlocks.Contains(Blocks[i]))
+                        return false;
                     if (!Blocks[i].Opened)
                     {
                         if (FirstOpened == -1)
@@ -69,45 +77,50 @@ namespace WindowsFormsApp1
                         }
                         Blocks[i].Opened = true;
                     }
-                    else if(SecondOpened ==-1)
+                    else if (SecondOpened == -1)
                     {
                         Blocks[i].Opened = false;
                         FirstOpened = -1;
 
                     }
+                    return true;
 
                 }
             }
+            return false;
         }
-        public  bool checkInformations()
+        public bool checkInformations()
         {
-            if (FirstOpened != -1 && SecondOpened != -1)
+
+            if (!Blocks[FirstOpened].Information.Equals(Blocks[SecondOpened].Information))
             {
 
-                if (!Blocks[FirstOpened].Information.Equals(Blocks[SecondOpened].Information))
-                {
 
-                    return false;
 
-                }
-                else
-                {
-                    Points += 100;
-                    FirstOpened = -1;
-                    SecondOpened = -1;
-                    return true;
-                }
-               
+                return false;
+
             }
-            return true;
-           
-            
+            else
+            {
+                Points += 100;
+                HittedBlocks.Add(Blocks[FirstOpened]);
+                HittedBlocks.Add(Blocks[SecondOpened]);
+                FirstOpened = -1;
+                SecondOpened = -1;
+
+                return true;
+            }
+
         }
-        public void close()
+        public void resetIndexes()
         {
             FirstOpened = -1;
             SecondOpened = -1;
         }
+        public void resetPropertiesOpened() {
+             Blocks[FirstOpened].Opened = false;
+            Blocks[SecondOpened].Opened = false;
+            }
        
       
        

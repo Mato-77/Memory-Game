@@ -39,12 +39,13 @@ namespace WindowsFormsApp1
             }
             else
             {
-                Pen p = new Pen(Color.White);
+                Pen p = new Pen(Color.White,3.5f);
+               
                 p.DashStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
                 g.DrawRectangle(p, Point.X - 20, Point.Y - 20, 2 * 30, 2 * 45);
                 Brush b = new SolidBrush(Color.Green);
-                Font font = new Font("Arial", 25);
-                g.DrawString(Information, font, b, Point.X, Point.Y);
+                Font font = new Font("Arial", 20);
+                g.DrawString(Information, font, b, Point.X - 5, Point.Y + 5);
                 p.Dispose();
                 b.Dispose();
                     
@@ -57,17 +58,6 @@ namespace WindowsFormsApp1
         {
             Rectangle rectangle = new Rectangle(Point.X - 20, Point.Y - 20, 2 * 30, 2 * 45);
             return rectangle.Contains(point);
-        }
-       
-
-    
-      
-
-
-
-        public override string ToString()
-        {
-            return String.Format("X: {0} , Y: {1}  - Information: {2}", Point.X, Point.Y, Information);
         }
  
     }

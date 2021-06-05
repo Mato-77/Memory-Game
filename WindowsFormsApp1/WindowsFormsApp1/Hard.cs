@@ -8,7 +8,9 @@ namespace WindowsFormsApp1
 {
    public class Hard :Level
     {
-        public Hard(int numBlocks): base(numBlocks,90) { }
+        public Hard(int numBlocks): base(numBlocks,90) {
+            Timing = 1500;
+        }
 
         public override void strategy()
         {
@@ -37,15 +39,11 @@ namespace WindowsFormsApp1
             Points -= 100;
             foreach (Block block in Blocks)
                 block.Opened = false;
-            close();
+            HittedBlocks.Clear();
+            
+            resetIndexes();
 
             
         }
-
-        public override void timing(Form1 form)
-        {
-        }
-
-        
     }
 }

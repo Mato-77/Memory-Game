@@ -8,21 +8,18 @@ namespace WindowsFormsApp1
 {
     public class Easy : Level
     {
-        public Easy(int NumBlocks) : base(NumBlocks,180) { }
+        public Easy(int NumBlocks) : base(NumBlocks,180) {
+            Timing = 3500;
+        }
 
         public override void punishment()
         {
             Points -= 50;
+            resetPropertiesOpened();
 
-            close();
+            resetIndexes();
         }
-        public  new void close()
-        {
-            Blocks[SecondOpened].Opened = false;
-            SecondOpened = -1;
-
-
-        }
+     
 
         public override void strategy()
         {
@@ -48,8 +45,6 @@ namespace WindowsFormsApp1
             }            
         }
 
-        public override void timing(Form1 form)
-        {
-        }
+   
     }
 }

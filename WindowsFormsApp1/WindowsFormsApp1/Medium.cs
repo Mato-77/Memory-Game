@@ -8,15 +8,17 @@ namespace WindowsFormsApp1
 {
     public class Medium : Level
     {
-        public Medium(int numBlocks): base(numBlocks,135) { }
+        public Medium(int numBlocks): base(numBlocks,135) {
+            Timing = 2500;
+        }
         public override  void punishment()
 
         {
             Points -= 150;
             Timer -= 5;
-            Blocks[FirstOpened].Opened = false;
-            Blocks[SecondOpened].Opened = false;
-            close();
+            resetPropertiesOpened();
+
+            resetIndexes();
         }
 
         public override void strategy()
@@ -48,8 +50,6 @@ namespace WindowsFormsApp1
             }
         }
 
-        public override void timing(Form1 form)
-        {
-        }
+     
     }
 }
