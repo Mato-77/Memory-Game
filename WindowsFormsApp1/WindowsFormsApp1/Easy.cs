@@ -8,7 +8,7 @@ namespace WindowsFormsApp1
 {
     public class Easy : Level
     {
-        public Easy(int NumBlocks) : base(NumBlocks) { }
+        public Easy(int NumBlocks) : base(NumBlocks,180) { }
 
         public override void play(Form1 form)
         {

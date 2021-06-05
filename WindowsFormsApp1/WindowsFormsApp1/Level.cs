@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
@@ -17,15 +18,28 @@ namespace WindowsFormsApp1
 
         public Random Random { get; set; }
 
-        public Level(int Blocks)
+        public int Timer { get; set; }
+
+        public Level(int Blocks,int Seconds)
         {
             this.NumBlocks = Blocks;
             this.Random = new Random();
             this.HiddenInformation = new List<string>();
             this.Blocks = new List<Block>();
+            this.Timer = Seconds;
             fillInformations();
             setCordinates();
             strategy();
+        }
+        public void contains(Point point)
+        {
+            foreach(Block block in Blocks)
+            {
+                if (block.contains(point))
+                {
+                    block.Opened = true;
+                }
+            }
         }
         public abstract void play(Form1 form);
 
@@ -46,13 +60,15 @@ namespace WindowsFormsApp1
                         k++;
                     }
                 }
-                else if(j == 5 && NumBlocks  == 16)
+            
+                else if(j == 5)
                 {
                     j = 1;
                     k++;
                 }
-                Point point = new Point(100 * j,110*k);
+                Point point = new Point(70 * j,105*k);
                 Block block = new Block(point);
+                
                 Blocks.Add(block);
             }
         }
@@ -64,7 +80,7 @@ namespace WindowsFormsApp1
                 HiddenInformation.Add(i.ToString());
             }
         }
-        public void drawBlocks(Graphics g)
+        public void drawBlocks( Graphics g)
         {
             foreach (Block block in Blocks)
                 block.draw(g);

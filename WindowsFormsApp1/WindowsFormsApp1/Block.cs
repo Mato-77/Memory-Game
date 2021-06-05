@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
@@ -13,6 +14,10 @@ namespace WindowsFormsApp1
 
         public Point Point { get; set; }
 
+        public bool Opened { get; set; }
+
+
+
         public Block( Point Point)
         {
            
@@ -20,17 +25,41 @@ namespace WindowsFormsApp1
         }
         public void draw(Graphics g)
         {
-            Pen pen = new Pen(Color.Red, 4);
-            Rectangle rectangle = new Rectangle(Point.X - 35, Point.Y - 50, 2 * 35, 2 * 50);
-            
-            g.DrawRectangle(pen, rectangle);
-            
-            pen.Dispose();
+            if (!Opened)
+            {
+                Brush b = new SolidBrush(Color.Green);
+                g.FillRectangle(b, Point.X - 20, Point.Y - 20, 2 * 30, 2 * 45);
+                b.Dispose();
+            }
+            else
+            {
+                Pen p = new Pen(Color.White);
+                p.DashStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+                g.DrawRectangle(p, Point.X - 20, Point.Y - 20, 2 * 30, 2 * 45);
+                Brush b = new SolidBrush(Color.Green);
+                Font font = new Font("Arial", 12);
+                g.DrawString(Information, font, b, Point.X - 20, Point.Y - 20);
+                    
+               
+            }
         }
+
+        public bool contains(Point point)
+        {
+            Rectangle rectangle = new Rectangle(Point.X - 20, Point.Y - 20, 2 * 30, 2 * 45);
+            return rectangle.Contains(point);
+        }
+       
+
+    
+      
+
+
+
         public override string ToString()
         {
             return String.Format("X: {0} , Y: {1}  - Information: {2}", Point.X, Point.Y, Information);
         }
-
+ 
     }
 }

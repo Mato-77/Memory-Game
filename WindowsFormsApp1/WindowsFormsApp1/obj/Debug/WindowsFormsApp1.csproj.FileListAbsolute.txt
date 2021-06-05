@@ -8,3 +8,4 @@ C:\Users\User\Desktop\FINKI\cetvrt semestar\Vizuelno programiranje\Proekt\Window
 C:\Users\User\Desktop\FINKI\cetvrt semestar\Vizuelno programiranje\Proekt\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\FINKI\cetvrt semestar\Vizuelno programiranje\Proekt\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\User\Desktop\FINKI\cetvrt semestar\Vizuelno programiranje\Proekt\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\User\Desktop\FINKI\cetvrt semestar\Vizuelno programiranje\Proekt\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.NewGame.resources

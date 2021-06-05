@@ -8,7 +8,7 @@ namespace WindowsFormsApp1
 {
    public class Hard :Level
     {
-        public Hard(int numBlocks): base(numBlocks) { }
+        public Hard(int numBlocks): base(numBlocks,90) { }
 
         public override void strategy()
         {
@@ -32,7 +32,7 @@ namespace WindowsFormsApp1
         public override void play( Form1 form)
         {
             form.changeResult(350);
-            form.Invalidate();
+            form.changeTimer(15);
         }
 
         public override void timing(Form1 form)

@@ -8,7 +8,7 @@ namespace WindowsFormsApp1
 {
     public class Medium : Level
     {
-        public Medium(int numBlocks): base(numBlocks) { }
+        public Medium(int numBlocks): base(numBlocks,135) { }
         public override  void play(Form1 form)
         {
             form.changeResult(120);

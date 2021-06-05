@@ -14,11 +14,15 @@ namespace WindowsFormsApp1
     {
         public Level Level { get; set; }
 
-     
         public Form1()
         {
-            Level = new Easy(18);
+            
             InitializeComponent();
+            newGameToolStripMenuItem_Click(null,null);
+            tbPoints.Text = "0.00";
+            DoubleBuffered = true;
+            
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -27,30 +31,23 @@ namespace WindowsFormsApp1
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-
          
-
-
-             Level.drawBlocks(e.Graphics);
+            Level.drawBlocks(e.Graphics);
         }
-
+      
+       
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
+            Level.contains(e.Location);
+            Invalidate();
+
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-        }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-        }
+
         public void changeResult(int value)
         {
            
@@ -67,5 +64,48 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            NewGame game = new NewGame();
+            if (game.ShowDialog() == DialogResult.OK)
+            {
+
+                Level = game.Level;
+                for (int i = 0; i < Controls.Count; i++)
+                {
+                    if (Controls[i].GetType() == typeof(PictureBox))
+                    {
+                        Controls.RemoveAt(i);
+                        i--;
+                    }
+
+                }
+                Invalidate();
+
+                tbTimer.Text = String.Format("{0}:{1}", (Level.Timer / 60).ToString("00"), (Level.Timer % 60).ToString("00"));
+                progressBarTime.Maximum = Level.Timer;
+                progressBarTime.Value = Level.Timer;
+                timer1.Start();
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Level.Timer -= 1;
+            tbTimer.Text = String.Format("{0}:{1}", (Level.Timer / 60).ToString("00"), (Level.Timer % 60).ToString("00"));
+            progressBarTime.Value = Level.Timer;
+            if(Level.Timer == 0)
+            {
+                timer1.Stop();
+                if (MessageBox.Show("Времето истече! Дали сакате нова игра?", "Играта заврши", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    newGameToolStripMenuItem_Click(null, null);
+                else
+                    this.Close(); ;
+            }
+
+        }
+    
     }
 }
