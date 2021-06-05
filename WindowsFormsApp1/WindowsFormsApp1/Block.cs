@@ -23,6 +23,12 @@ namespace WindowsFormsApp1
            
             this.Point = Point;
         }
+        public Block(Point Point, string Information)
+        {
+            this.Point = Point;
+            this.Information = Information;
+        }
+
         public void draw(Graphics g)
         {
             if (!Opened)
@@ -37,12 +43,15 @@ namespace WindowsFormsApp1
                 p.DashStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
                 g.DrawRectangle(p, Point.X - 20, Point.Y - 20, 2 * 30, 2 * 45);
                 Brush b = new SolidBrush(Color.Green);
-                Font font = new Font("Arial", 12);
-                g.DrawString(Information, font, b, Point.X - 20, Point.Y - 20);
+                Font font = new Font("Arial", 25);
+                g.DrawString(Information, font, b, Point.X, Point.Y);
+                p.Dispose();
+                b.Dispose();
                     
                
             }
         }
+        
 
         public bool contains(Point point)
         {

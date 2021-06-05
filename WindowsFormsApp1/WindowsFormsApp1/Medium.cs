@@ -9,10 +9,14 @@ namespace WindowsFormsApp1
     public class Medium : Level
     {
         public Medium(int numBlocks): base(numBlocks,135) { }
-        public override  void play(Form1 form)
+        public override  void punishment()
+
         {
-            form.changeResult(120);
-            form.changeTimer(4);
+            Points -= 150;
+            Timer -= 5;
+            Blocks[FirstOpened].Opened = false;
+            Blocks[SecondOpened].Opened = false;
+            close();
         }
 
         public override void strategy()
@@ -46,7 +50,6 @@ namespace WindowsFormsApp1
 
         public override void timing(Form1 form)
         {
-            form.maxTimePerLevel(10);
         }
     }
 }

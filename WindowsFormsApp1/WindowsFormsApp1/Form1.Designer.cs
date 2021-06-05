@@ -38,6 +38,7 @@ namespace WindowsFormsApp1
             this.wizzardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tbTimer = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,7 +71,7 @@ namespace WindowsFormsApp1
             this.wizzardToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(938, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(938, 30);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -104,6 +105,10 @@ namespace WindowsFormsApp1
             this.label1.Size = new System.Drawing.Size(50, 17);
             this.label1.TabIndex = 4;
             this.label1.Text = "Поени";
+            // 
+            // timer2
+            // 
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // Form1
             // 
@@ -142,6 +147,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.ToolStripMenuItem wizzardToolStripMenuItem;
         private System.Windows.Forms.TextBox tbTimer;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Timer timer2;
     }
 }
 

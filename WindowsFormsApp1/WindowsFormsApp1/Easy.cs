@@ -10,9 +10,18 @@ namespace WindowsFormsApp1
     {
         public Easy(int NumBlocks) : base(NumBlocks,180) { }
 
-        public override void play(Form1 form)
+        public override void punishment()
         {
-            form.changeResult(50);
+            Points -= 50;
+
+            close();
+        }
+        public  new void close()
+        {
+            Blocks[SecondOpened].Opened = false;
+            SecondOpened = -1;
+
+
         }
 
         public override void strategy()
@@ -41,7 +50,6 @@ namespace WindowsFormsApp1
 
         public override void timing(Form1 form)
         {
-            form.maxTimePerLevel(15);
         }
     }
 }

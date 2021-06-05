@@ -29,15 +29,23 @@ namespace WindowsFormsApp1
             }
         }
 
-        public override void play( Form1 form)
+        public override void punishment()
         {
-            form.changeResult(350);
-            form.changeTimer(15);
+
+            Timer -= 15;
+           
+            Points -= 100;
+            foreach (Block block in Blocks)
+                block.Opened = false;
+            close();
+
+            
         }
 
         public override void timing(Form1 form)
         {
-            form.maxTimePerLevel(5);
         }
+
+        
     }
 }

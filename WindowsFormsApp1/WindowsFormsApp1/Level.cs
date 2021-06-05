@@ -20,6 +20,12 @@ namespace WindowsFormsApp1
 
         public int Timer { get; set; }
 
+        public int FirstOpened { get; set; }
+
+        public int SecondOpened { get; set; }
+
+        public int Points { get; set; }
+
         public Level(int Blocks,int Seconds)
         {
             this.NumBlocks = Blocks;
@@ -27,27 +33,84 @@ namespace WindowsFormsApp1
             this.HiddenInformation = new List<string>();
             this.Blocks = new List<Block>();
             this.Timer = Seconds;
+            this.FirstOpened = -1;
+            this.SecondOpened = -1;
+            this.Points = 0;
             fillInformations();
             setCordinates();
             strategy();
         }
+        // punishment za soodvetna kazna pri pogresen odgovor  za sekoe nivo razlicna
+        public abstract void punishment();
+        // strategy e za rasporeduvanje na igrata
+        public abstract void strategy();
+        // razlicno vreme na dozvoleno otvaranje na eden blok pred toj da bide zatvoren
+        public abstract void timing(Form1 form);
+
+     
+
         public void contains(Point point)
         {
-            foreach(Block block in Blocks)
+            if (FirstOpened != -1 && SecondOpened != -1)
+                return;
+            for (int i = 0; i < Blocks.Count; i++)
             {
-                if (block.contains(point))
+                if (Blocks[i].contains(point))
                 {
-                    block.Opened = true;
+                    if (!Blocks[i].Opened)
+                    {
+                        if (FirstOpened == -1)
+                        {
+                            FirstOpened = i;
+                        }
+                        else
+                        {
+                            SecondOpened = i;
+                        }
+                        Blocks[i].Opened = true;
+                    }
+                    else if(SecondOpened ==-1)
+                    {
+                        Blocks[i].Opened = false;
+                        FirstOpened = -1;
+
+                    }
+
                 }
             }
         }
-        public abstract void play(Form1 form);
+        public  bool checkInformations()
+        {
+            if (FirstOpened != -1 && SecondOpened != -1)
+            {
 
-        public abstract void strategy();
+                if (!Blocks[FirstOpened].Information.Equals(Blocks[SecondOpened].Information))
+                {
 
-        public abstract void timing(Form1 form);
+                    return false;
 
-
+                }
+                else
+                {
+                    Points += 100;
+                    FirstOpened = -1;
+                    SecondOpened = -1;
+                    return true;
+                }
+               
+            }
+            return true;
+           
+            
+        }
+        public void close()
+        {
+            FirstOpened = -1;
+            SecondOpened = -1;
+        }
+       
+      
+       
         private void setCordinates()
         {
             for (int i = 1, j = 1,k=1; i <= NumBlocks; i++,j++)
@@ -92,6 +155,15 @@ namespace WindowsFormsApp1
             for (int i = 0; i < NumBlocks; i++)
                 list.Add(i);
             return list;
+        }
+        public bool finish()
+        {
+            foreach(Block block in Blocks)
+            {
+                if (!block.Opened)
+                    return false;
+            }
+            return true;
         }
         
     }
