@@ -13,24 +13,32 @@ namespace WindowsFormsApp1
     public partial class NewGame : Form
     {
         public Level Level { get; set; }
+        public String LevelType { get; set; }
         public NewGame()
         {
             InitializeComponent();
-        }
-
-        private void NewGamecs_Load(object sender, EventArgs e)
-        {
 
         }
 
+     
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (cbLevel.SelectedItem == "Easy")
+            if (cbLevel.SelectedItem == null)
+                return;
+            if (cbLevel.SelectedItem.Equals("Лесно"))
+            {
                 Level = new Easy(16);
-            else if (cbLevel.SelectedItem == "Medium")
+            }
+            else if (cbLevel.SelectedItem.Equals("Средно"))
+            {
                 Level = new Medium(20);
-            else
+
+            }
+            else {
                 Level = new Hard(36);
+
+            }
+            LevelType = cbLevel.SelectedItem.ToString();
             DialogResult = DialogResult.OK;
            
         }

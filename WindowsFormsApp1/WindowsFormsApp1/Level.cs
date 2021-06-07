@@ -102,7 +102,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-                Points += 100;
+                Points += 300;
                 HittedBlocks.Add(Blocks[FirstOpened]);
                 HittedBlocks.Add(Blocks[SecondOpened]);
                 FirstOpened = -1;

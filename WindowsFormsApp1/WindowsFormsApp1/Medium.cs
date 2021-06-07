@@ -8,14 +8,14 @@ namespace WindowsFormsApp1
 {
     public class Medium : Level
     {
-        public Medium(int numBlocks): base(numBlocks,135) {
+        public Medium(int numBlocks): base(numBlocks,180) {
             Timing = 2500;
         }
         public override  void punishment()
 
         {
             Points -= 150;
-            Timer -= 5;
+            Timer -= 2;
             resetPropertiesOpened();
 
             resetIndexes();

@@ -13,30 +13,36 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
         public Level Level { get; set; }
-
+        public Begin begin { get; set; }
 
         public Form1()
         {
-            
             InitializeComponent();
-            newGameToolStripMenuItem_Click(null,null);
-            tbPoints.Text = "0.00";
-            DoubleBuffered = true;
-            timer2.Interval = 800;
-            timer3.Interval = Level.Timing;
-            
+            Block.setImage();
+            begin = new Begin();
+            openBeginForm();
+
 
         }
+        private void init()
+        {
+            DoubleBuffered = true;
+            setTime();
+            timer1.Interval = 1000;
+            timer2.Interval = 800;
+            timer3.Interval = Level.Timing;
+            timer1.Start();
+        }
 
- 
+
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-         
+
             Level.drawBlocks(e.Graphics);
         }
-      
-       
+
+
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
 
@@ -55,34 +61,29 @@ namespace WindowsFormsApp1
                 else
                     timer3.Stop();
                 Invalidate();
+                //timer4.Start();
+
+
 
             }
 
         }
 
-        private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void setTime()
         {
-            timer1.Stop();
-            NewGame game = new NewGame();
-            if (game.ShowDialog() == DialogResult.OK)
-            {
+            if (Level.Timer > 0)
+                btnStyleTime.Text = String.Format("{0}:{1}", (Level.Timer / 60).ToString("00"), (Level.Timer % 60).ToString("00"));
+            else
+                btnStyleTime.Text = "00:00";
 
-                Level = game.Level;
-           
-                Invalidate();
 
-                progressBarTime.Maximum = Level.Timer;
-                progressBarTime.Value = Level.Timer;
-
-                timer1.Start();
-            }
         }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             Level.Timer -= 1;
-            tbTimer.Text = String.Format("{0}:{1}", (Level.Timer / 60).ToString("00"), (Level.Timer % 60).ToString("00"));
-            tbPoints.Text = Level.Points.ToString();
+            setTime();
+            btnStylePoints.Text = Level.Points.ToString();
             if (Level.Timer <= 0)
             {
                 endGame("Изгубивте!");
@@ -91,14 +92,13 @@ namespace WindowsFormsApp1
             {
                 endGame("Победивте!");
             }
-            progressBarTime.Value = Level.Timer;
 
         }
         private void endGame(String message)
         {
             timer1.Stop();
             if (MessageBox.Show(message + " Дали сакате нова игра?", "Играта заврши", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                newGameToolStripMenuItem_Click(null, null);
+                btnNewGame_Click(null, null);
             else
                 this.Close();
         }
@@ -116,6 +116,64 @@ namespace WindowsFormsApp1
             Level.Blocks[Level.FirstOpened].Opened = false;
             Level.FirstOpened = -1;
             Invalidate();
+        }
+
+      
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
+
+     
+
+
+
+        private void openBeginForm()
+        {
+            if (begin.ShowDialog() == DialogResult.OK)
+            {
+                if (Level == null)
+                {
+                    Level = new Easy(16);
+                    btnLevel.Text = "Лесно";
+                    init();
+                }
+                else
+                {
+                    timer1.Start();
+                }
+                Invalidate();
+
+            }
+
+        }
+
+        private void btnNewGame_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            NewGame game = new NewGame();
+            if (game.ShowDialog() == DialogResult.OK)
+            {
+                Level = game.Level;
+                btnLevel.Text = game.LevelType;
+                game.Close();
+                init();
+                Invalidate();
+
+
+            }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
+         
+            openBeginForm();
         }
     }
 }

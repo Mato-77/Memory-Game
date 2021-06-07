@@ -8,7 +8,7 @@ namespace WindowsFormsApp1
 {
     public class Easy : Level
     {
-        public Easy(int NumBlocks) : base(NumBlocks,180) {
+        public Easy(int NumBlocks) : base(NumBlocks,240) {
             Timing = 3500;
         }
 

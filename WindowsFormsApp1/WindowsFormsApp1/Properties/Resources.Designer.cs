@@ -63,9 +63,9 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap images {
+        internal static System.Drawing.Bitmap help_background {
             get {
-                object obj = ResourceManager.GetObject("images", resourceCulture);
+                object obj = ResourceManager.GetObject("help_background", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap IMG_4283_copy {
+        internal static System.Drawing.Bitmap poeni_background {
             get {
-                object obj = ResourceManager.GetObject("IMG_4283 copy", resourceCulture);
+                object obj = ResourceManager.GetObject("poeni_background", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,39 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap planks_dark_old_wood_texture_background_170515350 {
+        internal static System.Drawing.Bitmap solitaire_background {
             get {
-                object obj = ResourceManager.GetObject("planks-dark-old-wood-texture-background-170515350", resourceCulture);
+                object obj = ResourceManager.GetObject("solitaire_background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap vreme_background {
+            get {
+                object obj = ResourceManager.GetObject("vreme_background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap vreme_background1 {
+            get {
+                object obj = ResourceManager.GetObject("vreme_background1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap vreme_background2 {
+            get {
+                object obj = ResourceManager.GetObject("vreme_background2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
