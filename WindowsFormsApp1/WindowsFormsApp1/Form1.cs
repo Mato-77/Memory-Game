@@ -61,7 +61,6 @@ namespace WindowsFormsApp1
                 else
                     timer3.Stop();
                 Invalidate();
-                //timer4.Start();
 
 
 
@@ -135,20 +134,27 @@ namespace WindowsFormsApp1
 
         private void openBeginForm()
         {
-            if (begin.ShowDialog() == DialogResult.OK)
+            DialogResult dialog = begin.ShowDialog();
+            if (dialog== DialogResult.OK)
             {
                 if (Level == null)
                 {
                     Level = new Easy(16);
                     btnLevel.Text = "Лесно";
                     init();
+                    Invalidate();
+
                 }
                 else
                 {
+                    
                     timer1.Start();
                 }
-                Invalidate();
 
+            }
+            else
+            {
+                this.Close();
             }
 
         }
@@ -164,8 +170,10 @@ namespace WindowsFormsApp1
                 game.Close();
                 init();
                 Invalidate();
-
-
+            }
+            else
+            {
+                timer1.Start();
             }
         }
 
@@ -174,6 +182,11 @@ namespace WindowsFormsApp1
             timer1.Stop();
          
             openBeginForm();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

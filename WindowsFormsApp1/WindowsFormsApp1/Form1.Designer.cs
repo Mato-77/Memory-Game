@@ -41,6 +41,7 @@ namespace WindowsFormsApp1
             this.button2 = new System.Windows.Forms.Button();
             this.btnStylePoints = new System.Windows.Forms.Button();
             this.btnStyleTime = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // timer1
@@ -176,6 +177,21 @@ namespace WindowsFormsApp1
             this.btnStyleTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnStyleTime.UseVisualStyleBackColor = true;
             // 
+            // btnExit
+            // 
+            this.btnExit.BackColor = System.Drawing.Color.Maroon;
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Font = new System.Drawing.Font("Rockwell", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnExit.Location = new System.Drawing.Point(757, 0);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(181, 61);
+            this.btnExit.TabIndex = 13;
+            this.btnExit.Text = "Излез";
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -183,6 +199,7 @@ namespace WindowsFormsApp1
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.solitaire_background;
             this.ClientSize = new System.Drawing.Size(938, 752);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnStyleTime);
             this.Controls.Add(this.btnStylePoints);
             this.Controls.Add(this.button2);
@@ -218,6 +235,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnStylePoints;
         private System.Windows.Forms.Button btnStyleTime;
+        private System.Windows.Forms.Button btnExit;
     }
 }
 

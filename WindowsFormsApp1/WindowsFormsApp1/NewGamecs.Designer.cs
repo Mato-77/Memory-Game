@@ -32,6 +32,7 @@ namespace WindowsFormsApp1
             this.cbLevel = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cbLevel
@@ -43,9 +44,9 @@ namespace WindowsFormsApp1
             "Лесно",
             "Средно",
             "Тешко"});
-            this.cbLevel.Location = new System.Drawing.Point(221, 102);
+            this.cbLevel.Location = new System.Drawing.Point(240, 102);
             this.cbLevel.Name = "cbLevel";
-            this.cbLevel.Size = new System.Drawing.Size(121, 24);
+            this.cbLevel.Size = new System.Drawing.Size(128, 24);
             this.cbLevel.TabIndex = 0;
             this.cbLevel.ValueMember = "Easy";
             // 
@@ -54,11 +55,11 @@ namespace WindowsFormsApp1
             this.btnSave.BackColor = System.Drawing.Color.Maroon;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Font = new System.Drawing.Font("Rockwell", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnSave.Location = new System.Drawing.Point(127, 174);
+            this.btnSave.Location = new System.Drawing.Point(36, 171);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(140, 58);
+            this.btnSave.Size = new System.Drawing.Size(154, 58);
             this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Потврди";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -79,12 +80,28 @@ namespace WindowsFormsApp1
             this.button1.Text = "Изберете ниво";
             this.button1.UseVisualStyleBackColor = false;
             // 
+            // btnBack
+            // 
+            this.btnBack.BackColor = System.Drawing.Color.Maroon;
+            this.btnBack.FlatAppearance.BorderSize = 0;
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.Font = new System.Drawing.Font("Rockwell", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnBack.Location = new System.Drawing.Point(209, 171);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(146, 58);
+            this.btnBack.TabIndex = 8;
+            this.btnBack.Text = "Назад";
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // NewGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.solitaire_background;
             this.ClientSize = new System.Drawing.Size(386, 263);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.cbLevel);
@@ -101,5 +118,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.ComboBox cbLevel;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnBack;
     }
 }

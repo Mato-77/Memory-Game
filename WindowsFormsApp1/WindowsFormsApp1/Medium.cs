@@ -17,7 +17,6 @@ namespace WindowsFormsApp1
             Points -= 150;
             Timer -= 2;
             resetPropertiesOpened();
-
             resetIndexes();
         }
 
@@ -33,14 +32,10 @@ namespace WindowsFormsApp1
                 int first = numeredBlocks.ElementAt(Random.Next(numeredBlocks.Count));
                 numeredBlocks.Remove(first);
                 int second = numeredBlocks.ElementAt(Random.Next(numeredBlocks.Count));
-                if (numeredBlocks.Contains(first + 3))
-                    second = first + 3;
-                else if (numeredBlocks.Contains(first + 2))
-                    second = first + 2;
-                else if (numeredBlocks.Contains(first - 2))
-                    second = first - 2;
-                else if (numeredBlocks.Contains(first - 1))
-                    second = first - 1;
+                int offset = Random.Next(1, 5);
+                if (numeredBlocks.Contains(first +offset))
+                    second = first + offset;
+         
                 
                 numeredBlocks.Remove(second);
                 Blocks[first].Information = info;

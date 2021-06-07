@@ -8,7 +8,7 @@ namespace WindowsFormsApp1
 {
     public class Easy : Level
     {
-        public Easy(int NumBlocks) : base(NumBlocks,240) {
+        public Easy(int NumBlocks) : base(NumBlocks,120) {
             Timing = 3500;
         }
 
@@ -16,7 +16,6 @@ namespace WindowsFormsApp1
         {
             Points -= 50;
             resetPropertiesOpened();
-
             resetIndexes();
         }
      

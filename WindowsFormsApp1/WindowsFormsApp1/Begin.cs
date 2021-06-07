@@ -47,5 +47,11 @@ namespace WindowsFormsApp1
             state = new Initial();
             Invalidate();
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+
+            DialogResult = DialogResult.Cancel;           
+        }
     }
 }

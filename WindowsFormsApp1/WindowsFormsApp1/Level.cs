@@ -45,6 +45,7 @@ namespace WindowsFormsApp1
             setCordinates();
             strategy();
         }
+     
         // punishment za soodvetna kazna pri pogresen odgovor  za sekoe nivo razlicna
         public abstract void punishment();
         // strategy e za rasporeduvanje na igrata
@@ -52,15 +53,13 @@ namespace WindowsFormsApp1
         // razlicno vreme na dozvoleno otvaranje na eden blok pred toj da bide zatvoren
 
 
-
+      
         public bool contains(Point point)
         {
             if (FirstOpened != -1 && SecondOpened != -1)
                 return false;
             for (int i = 0; i < Blocks.Count; i++)
             {
-
-
                 if (Blocks[i].contains(point))
                 {
                     if (HittedBlocks.Contains(Blocks[i]))
@@ -68,49 +67,34 @@ namespace WindowsFormsApp1
                     if (!Blocks[i].Opened)
                     {
                         if (FirstOpened == -1)
-                        {
                             FirstOpened = i;
-                        }
                         else
-                        {
                             SecondOpened = i;
-                        }
+                        
                         Blocks[i].Opened = true;
                     }
                     else if (SecondOpened == -1)
                     {
                         Blocks[i].Opened = false;
                         FirstOpened = -1;
-
                     }
                     return true;
-
                 }
             }
             return false;
         }
         public bool checkInformations()
         {
-
             if (!Blocks[FirstOpened].Information.Equals(Blocks[SecondOpened].Information))
-            {
-
-
-
                 return false;
-
-            }
             else
             {
                 Points += 300;
                 HittedBlocks.Add(Blocks[FirstOpened]);
                 HittedBlocks.Add(Blocks[SecondOpened]);
-                FirstOpened = -1;
-                SecondOpened = -1;
-
+                resetIndexes();
                 return true;
             }
-
         }
         public void resetIndexes()
         {
@@ -136,7 +120,6 @@ namespace WindowsFormsApp1
                         k++;
                     }
                 }
-            
                 else if(j == 5)
                 {
                     j = 1;
@@ -144,7 +127,6 @@ namespace WindowsFormsApp1
                 }
                 Point point = new Point(70 * j,105*k);
                 Block block = new Block(point);
-                
                 Blocks.Add(block);
             }
         }
