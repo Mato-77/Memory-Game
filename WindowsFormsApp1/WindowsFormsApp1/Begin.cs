@@ -14,10 +14,16 @@ namespace WindowsFormsApp1
     {
 
         public State state { get; set; }
+
+        public string typeOfGame { get; set; }
+        public bool firstTime { get; set; }
+
+        public Level Level { get; set; }
         public Begin()
         {
             InitializeComponent();
             state = new Initial();
+            
         }
 
         private void Begin_Paint(object sender, PaintEventArgs e)
@@ -31,7 +37,20 @@ namespace WindowsFormsApp1
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.OK;
+            if (!firstTime)
+            {
+                NewGame game = new NewGame();
+                if (game.ShowDialog() == DialogResult.OK)
+                {
+                    Level = game.Level;
+                    typeOfGame = game.LevelType;
+                    firstTime = true;
+                    DialogResult = DialogResult.OK;
+                }
+            }
+            else
+                DialogResult = DialogResult.OK;
+
         }
 
         private void btnHelp_Click(object sender, EventArgs e)

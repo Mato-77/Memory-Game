@@ -14,11 +14,12 @@ namespace WindowsFormsApp1
     {
         public Level Level { get; set; }
         public Begin begin { get; set; }
+        public Point point { get; set; }
 
         public Form1()
         {
             InitializeComponent();
-            Block.setImage();
+            Card.setImage();
             begin = new Begin();
             openBeginForm();
 
@@ -39,7 +40,7 @@ namespace WindowsFormsApp1
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
 
-            Level.drawBlocks(e.Graphics);
+            Level.drawCards(e.Graphics);
         }
 
 
@@ -56,7 +57,7 @@ namespace WindowsFormsApp1
                     timer3.Stop();
 
                 }
-                else if (Level.FirstOpened != -1 && Level.Blocks[Level.FirstOpened].Opened)
+                else if (Level.FirstOpened != -1 && Level.Cards[Level.FirstOpened].Opened)
                     timer3.Start();
                 else
                     timer3.Stop();
@@ -112,7 +113,7 @@ namespace WindowsFormsApp1
         private void timer3_Tick(object sender, EventArgs e)
         {
             timer3.Stop();
-            Level.Blocks[Level.FirstOpened].Opened = false;
+            Level.Cards[Level.FirstOpened].Opened = false;
             Level.FirstOpened = -1;
             Invalidate();
         }
@@ -137,20 +138,11 @@ namespace WindowsFormsApp1
             DialogResult dialog = begin.ShowDialog();
             if (dialog== DialogResult.OK)
             {
-                if (Level == null)
-                {
-                    Level = new Easy(16);
-                    btnLevel.Text = "Лесно";
+                
+                    Level = begin.Level;
+                    btnLevel.Text = begin.typeOfGame;
                     init();
                     Invalidate();
-
-                }
-                else
-                {
-                    
-                    timer1.Start();
-                }
-
             }
             else
             {
@@ -188,5 +180,7 @@ namespace WindowsFormsApp1
         {
             this.Close();
         }
+
+    
     }
 }

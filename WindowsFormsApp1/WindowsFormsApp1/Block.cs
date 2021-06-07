@@ -11,19 +11,21 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public class Block
+    public class Card
     {
-        public string Information { get; set; }
+        
+        public string Information { get; set; } 
 
-        public Point Point { get; set; }
+        public Point Point { get; set; } 
 
-        public bool Opened { get; set; }
+       
+        public bool Opened { get; set; } // не е искористен State шаблон за состојба, поради полесна манипулација на булова променлива 
 
 
         public static Image image;
 
 
-        public Block(Point Point)
+        public Card(Point Point)
         {
            
             this.Point = Point;
@@ -37,7 +39,7 @@ namespace WindowsFormsApp1
                                     @"Resources\game-card.png"));
         }
         
-        public Block(Point Point, string Information)
+        public Card(Point Point, string Information)
         {
             this.Point = Point;
             this.Information = Information;
@@ -62,8 +64,6 @@ namespace WindowsFormsApp1
                 g.DrawString(Information, font, b, Point.X - 5, Point.Y + 5);
                 p.Dispose();
                 b.Dispose();
-                    
-               
             }
         }
         

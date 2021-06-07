@@ -8,24 +8,24 @@ namespace WindowsFormsApp1
 {
    public class Hard :Level
     {
-        public Hard(int numBlocks): base(numBlocks,360) {
+        public Hard(int numCards): base(numCards,360) {
             Timing = 1800;
         }
 
         public override void strategy()
         {
             List<string> temp = new List<string>(HiddenInformation);
-            List<int> numeredBlocks = this.getNumeredBlocks();
+            List<int> numeredCards = this.getNumeredCards();
 
             for (int i = 0; i < HiddenInformation.Count; i++)
             {
                 string info = temp[Random.Next(temp.Count)];
-                int first = numeredBlocks.ElementAt(Random.Next(numeredBlocks.Count));
-                numeredBlocks.Remove(first);
-                int second = numeredBlocks.ElementAt(Random.Next(numeredBlocks.Count));
-                numeredBlocks.Remove(second);
-                Blocks[first].Information = info;
-                Blocks[second].Information = info;
+                int first = numeredCards.ElementAt(Random.Next(numeredCards.Count));
+                numeredCards.Remove(first);
+                int second = numeredCards.ElementAt(Random.Next(numeredCards.Count));
+                numeredCards.Remove(second);
+                Cards[first].Information = info;
+                Cards[second].Information = info;
                 temp.Remove(info);
 
             }
@@ -37,9 +37,9 @@ namespace WindowsFormsApp1
             Timer -= 5;
            
             Points -= 200;
-            foreach (Block block in Blocks)
-                block.Opened = false;
-            HittedBlocks.Clear();
+            foreach (Card Card in Cards)
+                Card.Opened = false;
+            HittedCards.Clear();
             resetIndexes();
             
         }

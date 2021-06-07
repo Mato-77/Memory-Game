@@ -8,7 +8,7 @@ namespace WindowsFormsApp1
 {
     public class Easy : Level
     {
-        public Easy(int NumBlocks) : base(NumBlocks,120) {
+        public Easy(int NumCards) : base(NumCards,120) {
             Timing = 3500;
         }
 
@@ -23,22 +23,22 @@ namespace WindowsFormsApp1
         public override void strategy()
         {
             List<string> temp = new List<string>(HiddenInformation);
-            List<int> numeredBlocks = this.getNumeredBlocks();
+            List<int> numeredCards = this.getNumeredCards();
             
             for(int i = 0; i < HiddenInformation.Count; i++)
             {
                 string info = temp[Random.Next(temp.Count)];
-                int first =  numeredBlocks.ElementAt(Random.Next(numeredBlocks.Count));
-                numeredBlocks.Remove(first);
+                int first =  numeredCards.ElementAt(Random.Next(numeredCards.Count));
+                numeredCards.Remove(first);
                 int second = 0;
-                if (numeredBlocks.Contains(first + 1))
+                if (numeredCards.Contains(first + 1))
                     second = first + 1;
             
                 else
-                    second = numeredBlocks.ElementAt(Random.Next(numeredBlocks.Count));
-                numeredBlocks.Remove(second);
-                Blocks[first].Information = info;
-                Blocks[second].Information = info;
+                    second = numeredCards.ElementAt(Random.Next(numeredCards.Count));
+                numeredCards.Remove(second);
+                Cards[first].Information = info;
+                Cards[second].Information = info;
                 temp.Remove(info);
 
             }            

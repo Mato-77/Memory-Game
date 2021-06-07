@@ -30,10 +30,6 @@ namespace WindowsFormsApp1
             text = "Дозволено е отварање и затварање на првата картичка од парот во секое ниво!";
             g.DrawString(text, font, b, 10, 195);
 
-
-
-
-
             b.Dispose();
             buton1.Visible = false;
             button2.Visible = false;
