@@ -13,14 +13,13 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
         public Level Level { get; set; }
-        public Begin begin { get; set; }
-        public Point point { get; set; }
+        public Begin Begin { get; set; }
 
         public Form1()
         {
             InitializeComponent();
             Card.setImage();
-            begin = new Begin();
+            Begin = new Begin();
             openBeginForm();
 
 
@@ -135,12 +134,12 @@ namespace WindowsFormsApp1
 
         private void openBeginForm()
         {
-            DialogResult dialog = begin.ShowDialog();
+            DialogResult dialog = Begin.ShowDialog();
             if (dialog== DialogResult.OK)
             {
                 
-                    Level = begin.Level;
-                    btnLevel.Text = begin.typeOfGame;
+                    Level = Begin.Level;
+                    btnLevel.Text = Begin.TypeOfGame;
                     init();
                     Invalidate();
             }
@@ -159,6 +158,8 @@ namespace WindowsFormsApp1
             {
                 Level = game.Level;
                 btnLevel.Text = game.LevelType;
+                Begin.Level = game.Level;
+                Begin.TypeOfGame = game.LevelType;
                 game.Close();
                 init();
                 Invalidate();

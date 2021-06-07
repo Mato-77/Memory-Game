@@ -13,22 +13,22 @@ namespace WindowsFormsApp1
     public partial class Begin : Form
     {
 
-        public State state { get; set; }
+        public State State { get; set; }
 
-        public string typeOfGame { get; set; }
-        public bool firstTime { get; set; }
+        public string TypeOfGame { get; set; }
+        public bool FirstTime { get; set; }
 
         public Level Level { get; set; }
         public Begin()
         {
             InitializeComponent();
-            state = new Initial();
+            State = new Initial();
             
         }
 
         private void Begin_Paint(object sender, PaintEventArgs e)
         {
-          state.draw(e.Graphics,btnPlay,btnHelp,btnBack);
+          State.draw(e.Graphics,btnPlay,btnHelp,btnBack);
 
 
 
@@ -37,14 +37,14 @@ namespace WindowsFormsApp1
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            if (!firstTime)
+            if (!FirstTime)
             {
                 NewGame game = new NewGame();
                 if (game.ShowDialog() == DialogResult.OK)
                 {
                     Level = game.Level;
-                    typeOfGame = game.LevelType;
-                    firstTime = true;
+                    TypeOfGame = game.LevelType;
+                    FirstTime = true;
                     DialogResult = DialogResult.OK;
                 }
             }
@@ -55,7 +55,7 @@ namespace WindowsFormsApp1
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            state = new Help();
+            State = new Help();
             Invalidate();
         }
 
@@ -63,7 +63,7 @@ namespace WindowsFormsApp1
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            state = new Initial();
+            State = new Initial();
             Invalidate();
         }
 
