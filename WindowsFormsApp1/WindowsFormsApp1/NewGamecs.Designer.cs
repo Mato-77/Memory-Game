@@ -100,7 +100,7 @@ namespace WindowsFormsApp1
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.solitaire_background;
-            this.ClientSize = new System.Drawing.Size(386, 263);
+            this.ClientSize = new System.Drawing.Size(394, 263);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnSave);
