@@ -60,8 +60,8 @@ namespace WindowsFormsApp1
                 p.DashStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
                 g.DrawRectangle(p, Point.X - 20, Point.Y - 20, 2 * 30, 2 * 45);
                 Brush b = new SolidBrush(Color.Brown);
-                Font font = new Font("Arial", 20);
-                g.DrawString(Information, font, b, Point.X - 5, Point.Y + 5);
+                Font font = new Font("Arial", 25);
+                g.DrawString(Information, font, b, Point.X - 10, Point.Y + 5);
                 p.Dispose();
                 b.Dispose();
             }

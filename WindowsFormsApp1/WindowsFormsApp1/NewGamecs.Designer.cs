@@ -105,7 +105,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.cbLevel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "NewGame";
             this.ShowIcon = false;
             this.Text = "NewGame";

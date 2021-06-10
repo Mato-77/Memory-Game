@@ -106,6 +106,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.btnPlay);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.Window;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

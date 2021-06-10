@@ -18,17 +18,17 @@ namespace WindowsFormsApp1
             String caption = "Појаснувања и правила на играта ";
             g.DrawString(caption, font, b, 75, 50);
             font = new Font("Arial", 12);
-            g.DrawString(text, font, b, 10, 85);
-            text = "Целта на играта е отварање на сите картички пред истекот на времето\nпритоа отварајќи ги картичките во парови по 2\nшто содржат ист број.";
-            g.DrawString(text, font, b, 10, 100);
+            g.DrawString(text, font, b, 10, 90);
+            text = "Целта на играта е отварање на сите картички пред истекот на времето\nпритоа отварајќи ги картичките во парови по 2 што содржат ист број.";
+            g.DrawString(text, font, b, 10, 110);
             text = "Точно двe картички содржат ист број.";
             g.DrawString(text, font, b, 10, 150);
             text = "Постојат три нивоа на тежина: лесно, средно и тешко ниво.";
-            g.DrawString(text, font, b, 10, 165);
+            g.DrawString(text, font, b, 10, 170);
             text = "За секое ниво постои соодветна казна при погрешно отворени 2 картички!";
-            g.DrawString(text, font, b, 10, 180);
+            g.DrawString(text, font, b, 10, 190);
             text = "Дозволено е отварање и затварање на првата картичка од парот во секое ниво!";
-            g.DrawString(text, font, b, 10, 195);
+            g.DrawString(text, font, b, 10, 210);
 
             b.Dispose();
             buton1.Visible = false;
