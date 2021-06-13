@@ -109,6 +109,7 @@ namespace WindowsFormsApp1
             this.Name = "NewGame";
             this.ShowIcon = false;
             this.Text = "NewGame";
+            this.Load += new System.EventHandler(this.NewGame_Load);
             this.ResumeLayout(false);
 
         }

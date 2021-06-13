@@ -17,6 +17,7 @@ namespace WindowsFormsApp1
         public NewGame()
         {
             InitializeComponent();
+            cbLevel.SelectedIndex = 0;
 
         }
 
@@ -46,6 +47,11 @@ namespace WindowsFormsApp1
         private void btnBack_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
+        }
+
+        private void NewGame_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
